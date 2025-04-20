@@ -6,7 +6,7 @@ import { openModal, closeModal, closeByEscape } from "./modal.js";
 // DOM узлы
 const placesList = document.querySelector(".places__list");
 const allPopups = document.querySelectorAll(".popup");
-const closeByButton = document.querySelectorAll(".popup__close");
+const closeByButtonList = document.querySelectorAll(".popup__close");
 
 //информация о пользователе
 const profileName = document.querySelector(".profile__title");
@@ -53,7 +53,7 @@ function openImagePopup(cardData) {
   openModal(imagePopup);
 }
 
-closeByButton.forEach((button) => {
+closeByButtonList.forEach((button) => {
   const popup = button.closest(".popup"); // конкретный попап
   button.addEventListener("click", () => {
     closeModal(popup); // закрываем этот конкретный попап
@@ -65,14 +65,6 @@ allPopups.forEach((overlay) => {
     if (evt.target === overlay) {
       closeModal(overlay);
     }
-  });
-});
-
-// закрытие попапов на крестик
-closeByButton.forEach((button) => {
-  const popup = button.closest(".popup"); // конкретный попап
-  button.addEventListener("click", () => {
-    closeModal(popup); // закрываем этот конкретный попап
   });
 });
 
