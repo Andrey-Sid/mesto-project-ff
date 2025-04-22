@@ -9,12 +9,12 @@ function createCard(cardData, deleteCard, openImagePopup, handleLikeClick) {
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
-  const cardButton = cardElement.querySelector(".card__delete-button");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
   cardImage.src = cardData.link;
   cardTitle.textContent = cardData.name;
 
-  cardButton.addEventListener("click", () => deleteCard(cardElement));
+  cardDeleteButton.addEventListener("click", () => deleteCard(cardElement));
 
   //слушатель клика на картинку для открытия попапа
   cardImage.addEventListener("click", () => {
