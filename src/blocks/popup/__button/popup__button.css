@@ -14,6 +14,10 @@
   margin-top: 48px;
 }
 
+.popup_type_confirm .popup__button {
+  margin-top: 38px;
+}
+
 .popup__button:hover {
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
@@ -24,4 +28,18 @@
     font-size: 14px;
     line-height: 17px;
   }
+}
+
+/*Состояние кнопки сохранить*/
+
+.popup__button:disabled {
+  color: #C4C4C4;
+  border: 1px solid #C4C4C4;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.popup__button:disabled:hover {
+  cursor: default;
+  background: #fff;
 }
