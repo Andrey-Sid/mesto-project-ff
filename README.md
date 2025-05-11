@@ -1,3 +1,3 @@
 # Проектная работа Mesto
-- https://github.com/AlenaGorodeckaya/mesto-project-ff
-- https://AlenaGorodeckaya.github.io/mesto-project-ff
+- https://github.com/Andrey-Sid/mesto-project-ff
+- https://Andrey-Sid.github.io/mesto-project-ff
