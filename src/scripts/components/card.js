@@ -38,8 +38,8 @@ const deleteButton = cardElement.querySelector(".card__delete-button");
  likeButton.addEventListener("click", (evt) => handlerLikeImage(evt, value._id, userId, likeButton, likeCountElement));
 
 //Отрытие изображения
-  const imageFullSize = cardElement.querySelector(".card__image");
-  imageFullSize.addEventListener("click", () => openImageCard(value));
+  
+  imageCardElement.addEventListener("click", () => openImageCard(value));
 
   return cardElement;
 }
@@ -52,26 +52,24 @@ function deleteCard(handlerDeleteCard) {
 //@todo: Функция like карточки API
 const likeImage = function(evt, cardId, userId, likeButton, likeCountElement) { 
   evt.preventDefault();
-
-  if (likeButton.classList.contains("card__like-button_is-active")) { 
-    unlikeCard(cardId) 
-      .then((updatedCard) => { 
-        likeCountElement.textContent = updatedCard.likes.length;
-        likeButton.classList.remove("card__like-button_is-active");
-      }) 
-      .catch((err) => {
-        console.error("Ошибка удаления лайка:", err);
-      });
-  } else {
-    likeCard(cardId)
-      .then((updatedCard) => {
-        likeCountElement.textContent = updatedCard.likes.length;
-        likeButton.classList.add("card__like-button_is-active");
-      })
-      .catch((err) => {
-        console.error("Ошибка добавления лайка:", err);
-      });
-  } 
+  if (likeButton.classList.contains("card__like-button_is-active")) {    
+    const likeMethod = likeButton.classList.contains("card__like-button_is-active") ? unlikeCard : likeCard;
+      likeMethod(cardId) 
+        .then((updatedCard) => {  
+        likeCountElement.textContent = updatedCard.likes.length; 
+        likeButton.classList.toggle("card__like-button_is-active");
+        })
+        .catch(err => console.log(err));    
+    } else {
+      likeCard(cardId)
+        .then((updatedCard) => {
+          likeCountElement.textContent = updatedCard.likes.length;
+          likeButton.classList.add("card__like-button_is-active");
+        })
+        .catch((err) => {
+          console.error("Ошибка добавления лайка:", err);
+        });
+    } 
 }; 
 
 export{createCard, deleteCard, likeImage};
